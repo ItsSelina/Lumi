@@ -2,6 +2,8 @@ package me.selinali.lumi;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         final Drawable lightsOn = getDrawable(R.drawable.lights_on);
         final Drawable lightsOff = getDrawable(R.drawable.lights_off);
+
+        //final Bitmap lightsOn = BitmapFactory.decodeResource(getResources(), R.drawable.lights_on);
+        //final Bitmap lightsOff = BitmapFactory.decodeResource(getResources(), R.drawable.lights_off);
 
         isLightOn = false;
         lightSwitch = (Switch) findViewById(R.id.light_switch);
