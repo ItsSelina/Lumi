@@ -3,16 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/lights_off_copy"/>
+
+    <ImageView
+        android:id="@+id/lumi_imageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/light_switch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:src="@drawable/lights_off" />
 
     <Switch
         android:id="@+id/light_switch"
@@ -21,5 +23,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:switchMinWidth="68dp" />
+
 
 </RelativeLayout>

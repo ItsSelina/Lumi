@@ -2,6 +2,7 @@ package me.selinali.lumi;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Camera camera;
     Boolean isLightOn;
     Switch lightSwitch;
-    View view;
+    ImageView imageView;
     boolean isMarshmallow;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -28,9 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final Drawable lightsOn = getDrawable(R.drawable.lights_on);
+        final Drawable lightsOff = getDrawable(R.drawable.lights_off);
+
         isLightOn = false;
         lightSwitch = (Switch) findViewById(R.id.light_switch);
-        view = findViewById(R.id.background);
+        imageView = (ImageView) findViewById(R.id.lumi_imageview);
         isMarshmallow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
 
         if (isMarshmallow) {
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    view.setBackgroundResource(R.drawable.lights_on_copy);
+                    imageView.setImageDrawable(lightsOn);
 
                     if (isMarshmallow) {
                         try {
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else {
-                    view.setBackgroundResource(R.drawable.lights_off_copy);
+                    imageView.setImageDrawable(lightsOff);
 
                     if (isMarshmallow) {
                         try {
