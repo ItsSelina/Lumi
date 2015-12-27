@@ -2,8 +2,6 @@ package me.selinali.lumi;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraAccessException;
@@ -11,7 +9,7 @@ import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -25,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Switch lightSwitch;
     ImageView imageView;
     boolean isMarshmallow;
+    ViewGroup parentLayout;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -35,12 +34,10 @@ public class MainActivity extends AppCompatActivity {
         final Drawable lightsOn = getDrawable(R.drawable.lights_on);
         final Drawable lightsOff = getDrawable(R.drawable.lights_off);
 
-        //final Bitmap lightsOn = BitmapFactory.decodeResource(getResources(), R.drawable.lights_on);
-        //final Bitmap lightsOff = BitmapFactory.decodeResource(getResources(), R.drawable.lights_off);
-
         isLightOn = false;
         lightSwitch = (Switch) findViewById(R.id.light_switch);
         imageView = (ImageView) findViewById(R.id.lumi_imageview);
+        parentLayout = (ViewGroup) findViewById(R.id.parent_layout);
         isMarshmallow = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
 
         if (isMarshmallow) {
